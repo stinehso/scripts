@@ -1,25 +1,23 @@
 #!/bin/bash
 
-if [ "$#" == "0" ]; then
-	number=1
-elif [ "$#" == "1" ]; then
-	number=$1
-else
-	echo "using first number"
-	number=$1
-fi
+function climb {
+    # if no arguments passed, default to 1
+    if [ $# -eq 0 ]; then
+    	times=1
+    else
+        times=$1
+    fi
 
-str="cd .."
-var="/.."
+    str=""
+    var="../"
 
-i=1
-while [ $i -lt $number ]; do
-	echo $i
-	let i=$i+1
-	str="$str$var"
-done
-echo $str
+    # add "../" as many times as argument suggests
+    i=0
+    while [ $i -lt $times ]; do
+    	let i=$i+1
+    	str="$str$var"
+    done
 
-$str
-
-cd ..
+    # climb that number of directories
+    cd $str
+}
