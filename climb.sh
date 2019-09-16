@@ -18,7 +18,7 @@ while [ $i -lt $number ]; do
 	let i=$i+1
 	str="$str$var"
 done
-#echo $str
+echo $str
 
 $str
 
